@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,37 +8,40 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     // public Animator moveAni;
     public int runSpeed;
-    // public float move;
-    // public bool flipRight = true;
-    // Start is called before the first frame update
+    private int jumpCount = 0;
+    private bool doubleJump = true;
+    Animator anim;
     void Start()
     {
         
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {   
+        //set player auto run
         transform.position += Vector3.right * runSpeed * Time.deltaTime;
-        //Di chuyen trai phai
-        // move = Input.GetAxisRaw("Horizontal"); //A = -1,0  D = 1
-        // rb.velocity = new Vector2(speed*move, rb.velocity.y);
-        
-        // //Check quay dau
-        // if(flipRight == true && move == -1)
-        // {
-        //     transform.localScale = new Vector3(-1 , 1, 1);
-        //     flipRight = false;
-        // }
-        // if(flipRight == false && move == 1)
-        // {
-        //     transform.localScale = new Vector3(1 , 1, 1);
-        //     flipRight = true;
-        // }
 
-        //Animation
-        // moveAni.SetFloat("moveAnimator", Mathf.Abs(move));
+        if(jumpCount == 2){
+            doubleJump = false;
+        }
+        //set player jump
+        if(Input.GetKeyDown("space") && doubleJump)
+        {
+            rb.velocity = Vector3.up * 8f;
+            anim.SetTrigger("jump");
+            jumpCount += 1;
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D conllision)
+    {
+        if(conllision.gameObject.CompareTag("Ground"))
+        {
+            jumpCount = 0;
+            doubleJump = true;
+        }
     }
 }
