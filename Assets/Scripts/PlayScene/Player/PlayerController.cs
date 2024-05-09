@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private bool doubleJump = true;
     Animator anim;
     public bool gameOver = false;
+
+    public GameObject GameOverPanel, scoreText;
+    public TextMeshProUGUI FinalScoreText, HighScoreText;
     void Start()
     {
         
@@ -44,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         gameOver = true;
         anim.SetTrigger("death");
         StopCoroutine("IncreaseSpeed");   
+        StartCoroutine("ShowGameOverPanel");
+
     }
 
     private void OnCollisionEnter2D(Collision2D conllision)
@@ -76,5 +83,15 @@ public class PlayerMovement : MonoBehaviour
                 GameObject.Find("GroundSpawner").GetComponent<ObstacleSpawn>().obsSpawnInterval -= 0.1f;
             }
         }
+    }
+
+    IEnumerator ShowGameOverPanel(){
+        yield return new WaitForSeconds(2);
+        GameOverPanel.SetActive(true);
+        scoreText.SetActive(false);
+
+        FinalScoreText.text = "Score: " + GameObject.Find("ScoreDetector").GetComponent<ScoreSystem>().score;
+
+        HighScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
     }
 }
