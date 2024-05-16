@@ -20,6 +20,10 @@ public class ObstacleSpawn : MonoBehaviour
         {
             StopCoroutine("SpawnObstacles");
         }
+        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoving>().gameOver)
+        {
+            StopCoroutine("SpawnObstacles");
+        }
     }
 
     private void SpawnObstacle()
@@ -27,12 +31,12 @@ public class ObstacleSpawn : MonoBehaviour
         int random = Random.Range(1,3);
         if(random == 1)
         {
-            Instantiate(obs1, new Vector3(transform.position.x, 0.2f, 0), Quaternion.identity);
+            Instantiate(obs1, new Vector3(transform.position.x, 0.3f, 0), Quaternion.identity);
         }
 
         else if(random == 2)
         {
-            Instantiate(obs2, new Vector3(transform.position.x, 0.2f, 0), Quaternion.identity);
+            Instantiate(obs2, new Vector3(transform.position.x, 0.3f, 0), Quaternion.identity);
         }
     }
 

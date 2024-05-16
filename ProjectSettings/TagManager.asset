@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Obstacle
   - BottomDetector
+  - BGMusic
+  - Coin
+  - EarnCoin
   layers:
   - Default
   - TransparentFX

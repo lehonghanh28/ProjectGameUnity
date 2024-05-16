@@ -29,22 +29,22 @@ public class GroundSpawner : MonoBehaviour
 
         if(randomNum == 1)
         {
-            Instantiate(Ground1, new Vector3(transform.position.x + 3, -4.33f, 0), Quaternion.identity);
+            Instantiate(Ground1, new Vector3(transform.position.x + 3, -4.36f, 0), Quaternion.identity);
         }
 
         if(randomNum == 2)
         {
-            Instantiate(Ground2, new Vector3(transform.position.x + 5, -7.21f, 0), Quaternion.identity);
+            Instantiate(Ground2, new Vector3(transform.position.x + 4, -3.0f, 0), Quaternion.identity);
         }
 
         if(randomNum == 3)
         {
-            Instantiate(Ground3, new Vector3(transform.position.x + 6, -1.915683f, 0), Quaternion.identity);
+            Instantiate(Ground3, new Vector3(transform.position.x + 5, 0.1f, 0), Quaternion.identity);
         }
 
         if(randomNum == 4)
         {
-            Instantiate(Ground4, new Vector3(transform.position.x + 10, -1.75f, 0), Quaternion.identity);
+            Instantiate(Ground4, new Vector3(transform.position.x + 7, 2.0f, 0), Quaternion.identity);
         }
     }
      private void OnTriggerEnter2D(Collider2D collision)

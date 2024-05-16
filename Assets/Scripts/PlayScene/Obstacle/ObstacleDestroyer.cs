@@ -25,5 +25,9 @@ public class ObstacleDestroyer : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        if(collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
