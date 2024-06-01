@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HighScoreText.text = "High score : " + PlayerPrefs.GetInt("HighScore").ToString();
+        //HighScoreText.text = "High score : " + PlayerPrefs.GetInt("HighScore").ToString();
     }
 
     // Update is called once per frame
@@ -18,8 +18,12 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void LoadGameScene(){
+    public void LoadGameScene1(){
         SceneManager.LoadScene("Assets/Scenes/PlayScene.unity");
+    }
+
+    public void LoadGameScene2(){
+        SceneManager.LoadScene("Assets/Scenes/PlayScene2.unity");
     }
 
     public void ExitGame(){

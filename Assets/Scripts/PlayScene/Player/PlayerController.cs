@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,10 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     private bool doubleJump = true;
     Animator anim;
-    public bool gameOver = false;
 
-    public GameObject GameOverPanel, scoreText;
-    public TextMeshProUGUI FinalScoreText, HighScoreText;
     void Start()
     {
         
@@ -27,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(!gameOver)
+        if(!PlayerManager.gameOver)
         {
             transform.position += Vector3.right * runSpeed * Time.deltaTime;
         }
@@ -37,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = false;
         }
         //set player jump
-        if(Input.GetKeyDown("space") && doubleJump && !gameOver)
+        if(Input.GetKeyDown("space") && doubleJump && !PlayerManager.gameOver)
         {
             rb.velocity = Vector3.up * 7.5f;
             anim.SetTrigger("jump");
@@ -46,25 +43,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void GameOver(){
-        gameOver = true;
+        PlayerManager.gameOver = true;
         anim.SetTrigger("death");
         StopCoroutine("IncreaseSpeed");   
-        StartCoroutine("ShowGameOverPanel");
 
     }
 
-    private void OnCollisionEnter2D(Collision2D conllision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(conllision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
             doubleJump = true;
         }
-        if(conllision.gameObject.CompareTag("Obstacle"))
+        if(collision.gameObject.CompareTag("Obstacle"))
         {
             GameOver();
+            
         }
-        if(conllision.gameObject.CompareTag("BottomDetector"))
+        if(collision.gameObject.CompareTag("BottomDetector"))
         {
             GameOver();
         }
@@ -85,13 +82,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator ShowGameOverPanel(){
-        yield return new WaitForSeconds(2);
-        GameOverPanel.SetActive(true);
-        scoreText.SetActive(false);
-
-        FinalScoreText.text = "Score: " + GameObject.Find("ScoreDetector").GetComponent<ScoreSystem>().score;
-
-        HighScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
-    }
+    
 }

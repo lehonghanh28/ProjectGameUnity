@@ -10,6 +10,8 @@ TagManager:
   - BGMusic
   - Coin
   - EarnCoin
+  - PlayerManager
+  - CoinManager
   layers:
   - Default
   - TransparentFX

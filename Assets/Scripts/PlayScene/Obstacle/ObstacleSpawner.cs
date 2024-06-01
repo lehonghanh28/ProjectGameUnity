@@ -15,13 +15,13 @@ public class ObstacleSpawn : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameOver)
+    {   
+        //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameOver
+        if(PlayerManager.gameOver)
         {
             StopCoroutine("SpawnObstacles");
         }
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoving>().gameOver)
-        {
+        if(PlayerManage.gameOver1){
             StopCoroutine("SpawnObstacles");
         }
     }

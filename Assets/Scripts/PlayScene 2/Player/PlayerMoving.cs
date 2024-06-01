@@ -13,9 +13,6 @@ public class PlayerMoving : MonoBehaviour
     private int jumpCount = 0;
     private bool doubleJump = true;
     Animator anim;
-    public bool gameOver = false;
-
-    public Coin nbCoin;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +24,7 @@ public class PlayerMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(!gameOver)
+        if(!PlayerManage.gameOver1)
         {
             move.x = Input.GetAxisRaw("Horizontal");
             transform.position += move * runSpeed * Time.deltaTime;
@@ -45,23 +42,22 @@ public class PlayerMoving : MonoBehaviour
             doubleJump = false;
         }
 
-        if (Input.GetKeyDown("space") && doubleJump && !gameOver)
+        if (Input.GetKeyDown("space") && doubleJump && !PlayerManage.gameOver1)
         {
             rb.velocity = UnityEngine.Vector3.up * 7.5f;
             anim.SetTrigger("jump");
             jumpCount += 1;
         }
 
-        Debug.Log("Coin");
 
     }
 
-    public void GameOver(){
-        gameOver = true;
-        anim.SetTrigger("death");  
-        StartCoroutine("ShowGameOverPanel");
+    // public void GameOver(){
+    //     gameOver = true;
+    //     anim.SetTrigger("death");  
+    //     StartCoroutine("ShowGameOverPanel");
 
-    }
+    // }
 
 
      private void OnCollisionEnter2D(Collision2D collision)
@@ -74,22 +70,16 @@ public class PlayerMoving : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Obstacle"))
         {
-            GameOver();
+            PlayerManage.gameOver1 = true;
+            anim.SetTrigger("death");
         }
         if(collision.gameObject.CompareTag("BottomDetector"))
         {
-            GameOver();
+            PlayerManage.gameOver1 = true;
+            anim.SetTrigger("death");
         }
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Coin"))
-        {
-            nbCoin.numberCoins ++;
-            Destroy(collision.gameObject);
-        }
-    }
 
 }

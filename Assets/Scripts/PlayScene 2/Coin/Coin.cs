@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {   
-    public int numberCoins = 0;
-    public TextMeshProUGUI coinText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +15,16 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinText.text = "Coin" + numberCoins;
+
+    }
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            PlayerManage.numberCoins++;
+            PlayerPrefs.SetInt("numberCoins", PlayerManage.numberCoins);
+            Destroy(gameObject);
+        }
     }
 
 }

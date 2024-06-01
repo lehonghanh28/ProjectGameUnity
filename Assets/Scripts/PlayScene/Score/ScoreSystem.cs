@@ -15,8 +15,8 @@ public class ScoreSystem : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameOver){
+    {   //GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>().gameOver
+        if(PlayerManager.gameOver){
             if(PlayerPrefs.GetInt("HighScore") < score){
                 PlayerPrefs.SetInt("HighScore", score);
                 Debug.Log("New High score is " + score);

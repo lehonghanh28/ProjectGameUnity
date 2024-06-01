@@ -6,7 +6,7 @@ public class CoinSpawner : MonoBehaviour
 {   
     public GameObject coin;
     [HideInInspector]
-    public float coinSpawnInterval = 1.5f;
+    public float coinSpawnInterval = 2.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class CoinSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoving>().gameOver)
+        if(PlayerManage.gameOver1)
         {
             StopCoroutine("SpawnCoins");
         }

@@ -24,4 +24,8 @@ public class GameOverButton : MonoBehaviour
     public void LoadPlayScene(){
         SceneManager.LoadScene("Assets/Scenes/PlayScene.unity");
     }
+    public void LoadPlayScene2(){
+        SceneManager.LoadScene("Assets/Scenes/PlayScene2.unity");
+    }
+
 }
