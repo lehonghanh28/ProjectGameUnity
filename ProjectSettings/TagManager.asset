@@ -12,6 +12,8 @@ TagManager:
   - EarnCoin
   - PlayerManager
   - CoinManager
+  - BulletEnemy
+  - Ball
   layers:
   - Default
   - TransparentFX

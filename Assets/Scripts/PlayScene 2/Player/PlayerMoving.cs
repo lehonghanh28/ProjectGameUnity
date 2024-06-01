@@ -72,14 +72,27 @@ public class PlayerMoving : MonoBehaviour
         {
             PlayerManage.gameOver1 = true;
             anim.SetTrigger("death");
+             
         }
         if(collision.gameObject.CompareTag("BottomDetector"))
         {
             PlayerManage.gameOver1 = true;
             anim.SetTrigger("death");
+            
+        }
+        if(collision.gameObject.CompareTag("Slime")){
+            PlayerManage.gameOver1 = true;
+            anim.SetTrigger("death");
         }
 
     }
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.gameObject.CompareTag("BulletEnemy")){
+            Destroy(collision.gameObject);
+            PlayerManage.gameOver1 = true;
+            anim.SetTrigger("death");
+        }
+    }    
 
 
 }

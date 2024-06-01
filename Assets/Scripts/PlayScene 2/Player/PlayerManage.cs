@@ -15,7 +15,7 @@ public class PlayerManage : MonoBehaviour
     private void Awake(){
         numberCoins = PlayerPrefs.GetInt("numberCoins", 0);
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);
-        Instantiate(playerPrefabs2[characterIndex], new Vector3(-9.64f, -2.23f, 0) , Quaternion.identity);
+        Instantiate(playerPrefabs2[characterIndex], new Vector3(-6.4f, -2.23f, 0) , Quaternion.identity);
         gameOver1 = false;
     }
     void Start()

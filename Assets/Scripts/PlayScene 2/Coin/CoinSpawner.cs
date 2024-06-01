@@ -32,7 +32,7 @@ public class CoinSpawner : MonoBehaviour
 
         else if(random == 2)
         {
-            Instantiate(coin, new Vector3(transform.position.x, 4.2f, 0), Quaternion.identity);
+            Instantiate(coin, new Vector3(transform.position.x, 3.2f, 0), Quaternion.identity);
         }
     }
 

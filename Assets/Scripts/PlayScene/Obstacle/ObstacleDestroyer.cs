@@ -25,6 +25,13 @@ public class ObstacleDestroyer : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        if(collision.gameObject.CompareTag("Ball"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
