@@ -83,6 +83,7 @@ public class PlayerMoving : MonoBehaviour
         if(collision.gameObject.CompareTag("Slime")){
             PlayerManage.gameOver1 = true;
             anim.SetTrigger("death");
+            Destroy(collision.gameObject);
         }
 
     }

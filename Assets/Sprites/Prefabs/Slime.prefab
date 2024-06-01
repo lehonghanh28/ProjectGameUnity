@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4507124992172993587}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,8 +198,6 @@ MonoBehaviour:
   speed: 0.8
   rightCheck: {fileID: 2069591440238864663}
   leftCheck: {fileID: 3492299973682781789}
-  obs1: {fileID: 4158046542820750966, guid: ed685024355358e438264867ad9ee164, type: 3}
-  obs2: {fileID: 7895059905527533377, guid: 9f14df3b75aacd44fa752a0a3331158a, type: 3}
 --- !u!1 &676843478855669231
 GameObject:
   m_ObjectHideFlags: 0
